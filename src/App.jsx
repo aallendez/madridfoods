@@ -24,7 +24,8 @@ function App() {
               location: row.location || '',
               price: parseInt(row.price) || 0,
               grade: parseFloat(row.grade) || null,
-              note: row.note || ''
+              note: row.note || '',
+              chain: row.chain === 'true'
             }))
             setRestaurants(data)
             setLoading(false)

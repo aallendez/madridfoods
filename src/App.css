@@ -578,8 +578,9 @@ input, textarea, select, button, a {
    ============================================ */
 
 .filters {
-  padding: 1rem 0;
-  margin: 0 2rem;
+  padding: 1rem 2rem;
+  max-width: calc(100% - 4rem);
+  margin: 0 auto;
   display: flex;
   gap: 1.5rem;
   align-items: center;
@@ -634,137 +635,247 @@ input, textarea, select, button, a {
 
 .cards-container {
   padding: 1rem 2rem 2rem;
+  max-width: calc(100% - 4rem);
+  margin: 0 auto;
   animation: fadeInUp 0.5s ease-out;
 }
 
-.sort-controls {
+.type-group {
+  margin-bottom: 2.5rem;
+}
+
+.type-header {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.sort-controls span {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-}
-
-.sort-btn {
-  padding: 0.4rem 0.75rem;
-  background: var(--surface);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius);
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-  transition: all 0.2s ease;
-}
-
-.sort-btn:hover {
-  background: var(--surface-hover);
+  font-size: 1.25rem;
+  font-weight: 600;
   color: var(--text);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--glass-border);
 }
 
-.sort-btn.active {
-  background: var(--secondary);
-  border-color: var(--secondary);
-  color: white;
+.type-header-emoji {
+  font-size: 1.5rem;
 }
 
-.restaurant-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+.type-count {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--surface);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  margin-left: auto;
+}
+
+.restaurant-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--glass-border);
+  transition: background 0.2s ease;
+  animation: fadeIn 0.3s ease-out backwards;
   gap: 1rem;
 }
 
-.restaurant-card {
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
+.restaurant-row:last-child {
+  border-bottom: none;
+}
+
+.restaurant-row:hover {
+  background: var(--surface);
+  margin: 0 -0.5rem;
+  padding: 0.875rem 0.5rem;
   border-radius: var(--radius);
-  padding: 1rem;
-  transition: all 0.2s ease;
-  animation: fadeInUp 0.3s ease-out backwards;
 }
 
-.restaurant-card:hover {
-  border-color: var(--secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(78, 205, 196, 0.15);
-}
-
-.card-header {
+.row-main {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.card-emoji {
-  font-size: 1.75rem;
-  line-height: 1;
-}
-
-.card-title {
   flex: 1;
   min-width: 0;
 }
 
-.card-title h3 {
-  font-size: 1rem;
-  font-weight: 600;
+.row-name {
+  font-size: 0.95rem;
+  font-weight: 500;
   color: var(--text);
-  margin-bottom: 0.2rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.card-type {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.card-grade {
-  padding: 0.25rem 0.5rem;
-  border-radius: var(--radius);
+.row-grade {
   font-size: 0.8rem;
   font-weight: 600;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.card-grade.high {
-  background: rgba(78, 205, 196, 0.2);
+.row-grade.high {
   color: var(--secondary);
 }
 
-.card-grade.medium {
-  background: rgba(255, 230, 109, 0.2);
+.row-grade.medium {
   color: var(--accent);
 }
 
-.card-grade.low {
-  background: rgba(255, 107, 107, 0.2);
+.row-grade.low {
   color: var(--primary);
 }
 
-.card-details {
+.row-details {
   display: flex;
+  align-items: center;
   gap: 1rem;
+  flex-shrink: 0;
   font-size: 0.85rem;
-  color: var(--text-secondary);
-  flex-wrap: wrap;
 }
 
-.card-price {
+.row-price {
   color: var(--secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.row-location {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.row-location.chain {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.row-note {
+  color: var(--text-muted);
+  font-style: italic;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row-emoji {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.row-type {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--surface);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+/* ============================================
+   PASSWORD MODAL
+   ============================================ */
+
+.password-modal {
+  background: var(--background);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  animation: fadeInUp 0.3s ease-out;
+  text-align: center;
+}
+
+.password-modal-header {
+  margin-bottom: 1rem;
+}
+
+.password-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.password-modal h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.password-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.password-description a {
+  color: var(--accent);
+  text-decoration: none;
   font-weight: 500;
 }
 
-.card-note {
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
+.password-description a:hover {
+  text-decoration: underline;
+}
+
+.password-input {
+  width: 100%;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  color: var(--text);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.password-input::placeholder {
   color: var(--text-muted);
-  font-style: italic;
+}
+
+.password-input:focus {
+  outline: none;
+  border-color: var(--secondary);
+  box-shadow: 0 0 15px rgba(78, 205, 196, 0.2);
+}
+
+.password-input.error {
+  border-color: var(--primary);
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+.password-error {
+  display: block;
+  color: var(--primary);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.password-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
 /* ============================================
@@ -985,8 +1096,8 @@ input, textarea, select, button, a {
   }
 
   .filters {
-    margin: 0 1rem;
-    padding: 1rem 0;
+    padding: 1rem;
+    max-width: 100%;
     flex-direction: column;
     align-items: stretch;
     gap: 1rem;
@@ -1010,8 +1121,12 @@ input, textarea, select, button, a {
     padding: 1rem;
   }
 
-  .sort-controls {
-    justify-content: center;
+  .type-header {
+    font-size: 1.1rem;
+  }
+
+  .type-header-emoji {
+    font-size: 1.25rem;
   }
 
   .restaurant-cards {
@@ -1020,5 +1135,28 @@ input, textarea, select, button, a {
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  /* Row layout mobile styles */
+  .restaurant-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+
+  .row-main {
+    width: 100%;
+  }
+
+  .row-details {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+
+  .row-note {
+    max-width: 100%;
+    white-space: normal;
   }
 }

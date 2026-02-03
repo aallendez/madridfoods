@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AddRestaurantModal from './AddRestaurantModal'
 import SearchResults from './SearchResults'
+import PasswordModal from './PasswordModal'
 
 const suggestions = [
   {
@@ -85,12 +86,34 @@ export const TYPE_EMOJIS = {
   'Barato': '💰'
 }
 
+const SECRET_CODE = 'madridmola'
+
 function HomePage({ restaurants, addRestaurant }) {
   const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
   const [showModal, setShowModal] = useState(false)
+  const [showPasswordModal, setShowPasswordModal] = useState(false)
   const [searchResults, setSearchResults] = useState(null)
   const [activeSuggestion, setActiveSuggestion] = useState(null)
+  const [isUnlocked, setIsUnlocked] = useState(false)
+
+  const handleAddClick = () => {
+    if (isUnlocked) {
+      setShowModal(true)
+    } else {
+      setShowPasswordModal(true)
+    }
+  }
+
+  const handlePasswordSubmit = (code) => {
+    if (code === SECRET_CODE) {
+      setIsUnlocked(true)
+      setShowPasswordModal(false)
+      setShowModal(true)
+      return true
+    }
+    return false
+  }
 
   const filterRestaurants = (filters) => {
     return restaurants.filter(restaurant => {
@@ -187,10 +210,10 @@ function HomePage({ restaurants, addRestaurant }) {
               📋 Ver todos los sitios
             </button>
             <button
-              className="btn btn-disabled"
-              disabled
+              className="btn btn-glass"
+              onClick={handleAddClick}
             >
-              ➕ Añadir sitio <span className="coming-soon">Coming soon</span>
+              ➕ Añadir sitio
             </button>
           </div>
         </div>
@@ -205,8 +228,15 @@ function HomePage({ restaurants, addRestaurant }) {
       </main>
 
       <footer className="footer">
-        <p>🇪🇸 Built by <a href="https://juan.aallende.com" target="_blank" rel="noopener noreferrer">Juan</a> in Madrid, Spain.</p>
+        <p>🇪🇸 Built by <a href="https://juan.aallende.com" target="_blank" rel="noopener noreferrer">Juan</a> in Madrid, Spain. Data by Nacho ;)</p>
       </footer>
+
+      {showPasswordModal && (
+        <PasswordModal
+          onSubmit={handlePasswordSubmit}
+          onClose={() => setShowPasswordModal(false)}
+        />
+      )}
 
       {showModal && (
         <AddRestaurantModal

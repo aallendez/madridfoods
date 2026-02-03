@@ -18,32 +18,32 @@ function SearchResults({ results, title, onClose }) {
           <p className="results-count">
             {results.length} sitio{results.length !== 1 ? 's' : ''} encontrado{results.length !== 1 ? 's' : ''} 🎉
           </p>
-          <div className="results-grid">
+          <div className="restaurant-rows">
             {results.map((restaurant, index) => (
               <div
                 key={restaurant.id}
-                className="result-card"
-                style={{ animationDelay: `${index * 0.03}s` }}
+                className="restaurant-row"
+                style={{ animationDelay: `${index * 0.015}s` }}
               >
-                <div className="result-card-header">
-                  <span className="restaurant-emoji">{TYPE_EMOJIS[restaurant.type] || '🍽️'}</span>
-                  <h4>{restaurant.name}</h4>
+                <div className="row-main">
+                  <span className="row-emoji">{TYPE_EMOJIS[restaurant.type] || '🍽️'}</span>
+                  <span className="row-name">{restaurant.name}</span>
+                  {restaurant.grade && (
+                    <span className={`row-grade ${restaurant.grade >= 9 ? 'high' : restaurant.grade >= 7 ? 'medium' : 'low'}`}>
+                      ⭐ {restaurant.grade}
+                    </span>
+                  )}
                 </div>
-                <div className="result-info">
-                  <span className="type-badge">{restaurant.type}</span>
-                  <span className="price">~{restaurant.price}€</span>
+                <div className="row-details">
+                  <span className="row-type">{restaurant.type}</span>
+                  <span className="row-price">~{restaurant.price}€</span>
+                  {restaurant.chain ? (
+                    <span className="row-location chain">📍 Muchos locales</span>
+                  ) : restaurant.location ? (
+                    <span className="row-location">📍 {restaurant.location}</span>
+                  ) : null}
+                  {restaurant.note && <span className="row-note">{restaurant.note}</span>}
                 </div>
-                {restaurant.grade && (
-                  <div className="grade">
-                    ⭐ {restaurant.grade}/10
-                  </div>
-                )}
-                {restaurant.location && (
-                  <p className="location">📍 {restaurant.location}</p>
-                )}
-                {restaurant.note && (
-                  <p className="note">💬 {restaurant.note}</p>
-                )}
               </div>
             ))}
           </div>

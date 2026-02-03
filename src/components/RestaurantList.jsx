@@ -1,54 +1,87 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AddRestaurantModal from './AddRestaurantModal'
+import PasswordModal from './PasswordModal'
 import { TYPE_EMOJIS } from './HomePage'
+
+// Define type order for grouping
+const TYPE_ORDER = [
+  'Española/Mediterránea',
+  'Italiano',
+  'Mexicano',
+  'Hamburguesas/Americana',
+  'Asiático',
+  'Indio',
+  'Sudamericano',
+  'Bares/Tapeo',
+  'Desayuno/Merienda',
+  'Para Comer',
+  'Para Cenar',
+  'Healthy',
+  'Cheesecake',
+  'Premium',
+  'Mercados/Terrazas',
+  'Barato'
+]
+
+const SECRET_CODE = 'madridmola'
 
 function RestaurantList({ restaurants, addRestaurant }) {
   const navigate = useNavigate()
   const [showModal, setShowModal] = useState(false)
-  const [sortField, setSortField] = useState('name')
-  const [sortDirection, setSortDirection] = useState('asc')
+  const [showPasswordModal, setShowPasswordModal] = useState(false)
   const [filterType, setFilterType] = useState('')
   const [filterPrice, setFilterPrice] = useState('')
+  const [isUnlocked, setIsUnlocked] = useState(false)
 
-  const types = [...new Set(restaurants.map(r => r.type))].sort()
-
-  const handleSort = (field) => {
-    if (sortField === field) {
-      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')
+  const handleAddClick = () => {
+    if (isUnlocked) {
+      setShowModal(true)
     } else {
-      setSortField(field)
-      setSortDirection('asc')
+      setShowPasswordModal(true)
     }
   }
 
-  const filteredAndSorted = [...restaurants]
-    .filter(r => {
-      if (filterType && r.type !== filterType) return false
-      if (filterPrice) {
-        const [min, max] = filterPrice.split('-').map(Number)
-        if (r.price < min || r.price > max) return false
-      }
+  const handlePasswordSubmit = (code) => {
+    if (code === SECRET_CODE) {
+      setIsUnlocked(true)
+      setShowPasswordModal(false)
+      setShowModal(true)
       return true
-    })
-    .sort((a, b) => {
-      let aVal = a[sortField]
-      let bVal = b[sortField]
+    }
+    return false
+  }
 
-      if (sortField === 'grade') {
-        aVal = aVal || 0
-        bVal = bVal || 0
-      }
+  const types = [...new Set(restaurants.map(r => r.type))].sort((a, b) => {
+    const aIndex = TYPE_ORDER.indexOf(a)
+    const bIndex = TYPE_ORDER.indexOf(b)
+    if (aIndex === -1 && bIndex === -1) return a.localeCompare(b)
+    if (aIndex === -1) return 1
+    if (bIndex === -1) return -1
+    return aIndex - bIndex
+  })
 
-      if (typeof aVal === 'string') {
-        aVal = aVal.toLowerCase()
-        bVal = bVal.toLowerCase()
-      }
+  const filtered = restaurants.filter(r => {
+    if (filterType && r.type !== filterType) return false
+    if (filterPrice) {
+      const [min, max] = filterPrice.split('-').map(Number)
+      if (r.price < min || r.price > max) return false
+    }
+    return true
+  })
 
-      if (aVal < bVal) return sortDirection === 'asc' ? -1 : 1
-      if (aVal > bVal) return sortDirection === 'asc' ? 1 : -1
-      return 0
-    })
+  // Group restaurants by type
+  const groupedByType = types.reduce((acc, type) => {
+    const restaurantsOfType = filtered
+      .filter(r => r.type === type)
+      .sort((a, b) => a.name.localeCompare(b.name))
+    if (restaurantsOfType.length > 0) {
+      acc[type] = restaurantsOfType
+    }
+    return acc
+  }, {})
+
+  const totalFiltered = filtered.length
 
   return (
     <div className="restaurant-list-page">
@@ -60,10 +93,10 @@ function RestaurantList({ restaurants, addRestaurant }) {
         </button>
         <h1>📍 Todos los sitios</h1>
         <button
-          className="btn btn-disabled btn-sm"
-          disabled
+          className="btn btn-glass btn-sm"
+          onClick={handleAddClick}
         >
-          ➕ Añadir <span className="coming-soon">Soon</span>
+          ➕ Añadir
         </button>
       </div>
 
@@ -99,61 +132,55 @@ function RestaurantList({ restaurants, addRestaurant }) {
         </div>
 
         <span className="results-info">
-          📊 {filteredAndSorted.length} de {restaurants.length} sitios
+          📊 {totalFiltered} de {restaurants.length} sitios
         </span>
       </div>
 
       <div className="cards-container">
-        <div className="sort-controls">
-          <span>Ordenar por:</span>
-          <button
-            className={`sort-btn ${sortField === 'name' ? 'active' : ''}`}
-            onClick={() => handleSort('name')}
-          >
-            Nombre {sortField === 'name' && (sortDirection === 'asc' ? '↑' : '↓')}
-          </button>
-          <button
-            className={`sort-btn ${sortField === 'price' ? 'active' : ''}`}
-            onClick={() => handleSort('price')}
-          >
-            Precio {sortField === 'price' && (sortDirection === 'asc' ? '↑' : '↓')}
-          </button>
-          <button
-            className={`sort-btn ${sortField === 'grade' ? 'active' : ''}`}
-            onClick={() => handleSort('grade')}
-          >
-            Nota {sortField === 'grade' && (sortDirection === 'asc' ? '↑' : '↓')}
-          </button>
-        </div>
-
-        <div className="restaurant-cards">
-          {filteredAndSorted.map((restaurant, index) => (
-            <div
-              key={restaurant.id}
-              className="restaurant-card"
-              style={{ animationDelay: `${index * 0.02}s` }}
-            >
-              <div className="card-header">
-                <span className="card-emoji">{TYPE_EMOJIS[restaurant.type] || '🍽️'}</span>
-                <div className="card-title">
-                  <h3>{restaurant.name}</h3>
-                  <span className="card-type">{restaurant.type}</span>
+        {Object.entries(groupedByType).map(([type, restaurantsOfType]) => (
+          <div key={type} className="type-group">
+            <h2 className="type-header">
+              <span className="type-header-emoji">{TYPE_EMOJIS[type] || '🍽️'}</span>
+              {type}
+              <span className="type-count">{restaurantsOfType.length}</span>
+            </h2>
+            <div className="restaurant-rows">
+              {restaurantsOfType.map((restaurant, index) => (
+                <div
+                  key={restaurant.id}
+                  className="restaurant-row"
+                  style={{ animationDelay: `${index * 0.015}s` }}
+                >
+                  <div className="row-main">
+                    <span className="row-name">{restaurant.name}</span>
+                    {restaurant.grade && (
+                      <span className={`row-grade ${restaurant.grade >= 9 ? 'high' : restaurant.grade >= 7 ? 'medium' : 'low'}`}>
+                        ⭐ {restaurant.grade}
+                      </span>
+                    )}
+                  </div>
+                  <div className="row-details">
+                    <span className="row-price">~{restaurant.price}€</span>
+                    {restaurant.chain ? (
+                      <span className="row-location chain">📍 Muchos locales</span>
+                    ) : restaurant.location ? (
+                      <span className="row-location">📍 {restaurant.location}</span>
+                    ) : null}
+                    {restaurant.note && <span className="row-note">{restaurant.note}</span>}
+                  </div>
                 </div>
-                {restaurant.grade && (
-                  <span className={`card-grade ${restaurant.grade >= 9 ? 'high' : restaurant.grade >= 7 ? 'medium' : 'low'}`}>
-                    ⭐ {restaurant.grade}
-                  </span>
-                )}
-              </div>
-              <div className="card-details">
-                <span className="card-price">~{restaurant.price}€/persona</span>
-                {restaurant.location && <span className="card-location">📍 {restaurant.location}</span>}
-              </div>
-              {restaurant.note && <p className="card-note">{restaurant.note}</p>}
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+
+      {showPasswordModal && (
+        <PasswordModal
+          onSubmit={handlePasswordSubmit}
+          onClose={() => setShowPasswordModal(false)}
+        />
+      )}
 
       {showModal && (
         <AddRestaurantModal
