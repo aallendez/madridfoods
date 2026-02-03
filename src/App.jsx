@@ -10,7 +10,7 @@ function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/src/data/restaurants.csv')
+    fetch('/restaurants.csv')
       .then(response => response.text())
       .then(csvText => {
         Papa.parse(csvText, {
