@@ -185,12 +185,20 @@ function HomePage({ restaurants, addRestaurant }) {
               </div>
               <button type="submit" className="search-button">Buscar</button>
             </form>
-            <button
-              className="btn btn-glass btn-todos"
-              onClick={() => navigate('/todos')}
-            >
-              Ver todos <span className="btn-arrow">➜</span>
-            </button>
+            <div className="header-actions">
+              <button
+                className="btn-add-icon"
+                onClick={handleAddClick}
+              >
+                +
+              </button>
+              <button
+                className="btn btn-glass btn-todos"
+                onClick={() => navigate('/todos')}
+              >
+                Ver todos <span className="btn-arrow">➜</span>
+              </button>
+            </div>
           </div>
 
           <div className="suggestions-grid">
@@ -206,15 +214,6 @@ function HomePage({ restaurants, addRestaurant }) {
                 <span className="suggestion-description">{suggestion.description}</span>
               </button>
             ))}
-          </div>
-
-          <div className="action-buttons">
-            <button
-              className="btn btn-glass"
-              onClick={handleAddClick}
-            >
-              ➕ Añadir sitio
-            </button>
           </div>
         </div>
 

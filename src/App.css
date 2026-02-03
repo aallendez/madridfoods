@@ -216,8 +216,6 @@ input, textarea, select, button, a {
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 1.5rem;
-  position: absolute;
-  right: 0;
 }
 
 .btn-arrow {
@@ -228,6 +226,60 @@ input, textarea, select, button, a {
 
 .btn-todos:hover .btn-arrow {
   transform: translateX(2px);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: absolute;
+  right: 0;
+}
+
+.btn-add-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  font-size: 1.5rem;
+  color: var(--text);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.btn-add-icon:hover {
+  background: var(--surface-hover);
+  transform: translateY(-2px);
+}
+
+.btn-add-icon::after {
+  content: 'Añadir restaurante';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--background);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: var(--text);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+.btn-add-icon:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .search-input-wrapper {
@@ -1159,9 +1211,19 @@ input, textarea, select, button, a {
     width: 100%;
   }
 
-  .btn-todos {
+  .header-actions {
     position: static;
     width: 100%;
+    justify-content: center;
+  }
+
+  .btn-add-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .btn-todos {
+    flex: 1;
     justify-content: center;
   }
 
