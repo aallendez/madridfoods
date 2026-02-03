@@ -200,6 +200,7 @@ input, textarea, select, button, a {
   justify-content: center;
   gap: 1rem;
   margin-bottom: 2.5rem;
+  position: relative;
 }
 
 .search-form {
@@ -214,11 +215,15 @@ input, textarea, select, button, a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  position: absolute;
+  right: 0;
 }
 
 .btn-arrow {
   display: inline-block;
   transition: transform 0.2s ease;
+  font-size: 1rem;
 }
 
 .btn-todos:hover .btn-arrow {
@@ -1155,6 +1160,7 @@ input, textarea, select, button, a {
   }
 
   .btn-todos {
+    position: static;
     width: 100%;
     justify-content: center;
   }

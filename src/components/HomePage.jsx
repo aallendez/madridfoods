@@ -189,7 +189,7 @@ function HomePage({ restaurants, addRestaurant }) {
               className="btn btn-glass btn-todos"
               onClick={() => navigate('/todos')}
             >
-              Ver todos <span className="btn-arrow">→</span>
+              Ver todos <span className="btn-arrow">➜</span>
             </button>
           </div>
 
