@@ -50,11 +50,6 @@ function RestaurantList({ restaurants, addRestaurant }) {
       return 0
     })
 
-  const SortIcon = ({ field }) => {
-    if (sortField !== field) return <span className="sort-icon">⇅</span>
-    return <span className="sort-icon">{sortDirection === 'asc' ? '↑' : '↓'}</span>
-  }
-
   return (
     <div className="restaurant-list-page">
       <div className="background-gradient"></div>
@@ -108,52 +103,56 @@ function RestaurantList({ restaurants, addRestaurant }) {
         </span>
       </div>
 
-      <div className="table-container">
-        <table className="restaurant-table">
-          <thead>
-            <tr>
-              <th onClick={() => handleSort('name')}>
-                Nombre <SortIcon field="name" />
-              </th>
-              <th onClick={() => handleSort('type')}>
-                Tipo <SortIcon field="type" />
-              </th>
-              <th onClick={() => handleSort('price')}>
-                Precio <SortIcon field="price" />
-              </th>
-              <th onClick={() => handleSort('grade')}>
-                Nota <SortIcon field="grade" />
-              </th>
-              <th>Zona</th>
-              <th>Comentario</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredAndSorted.map((restaurant, index) => (
-              <tr key={restaurant.id} style={{ animationDelay: `${index * 0.02}s` }}>
-                <td className="name-cell">
-                  <span className="cell-emoji">{TYPE_EMOJIS[restaurant.type] || '🍽️'}</span>
-                  {restaurant.name}
-                </td>
-                <td>
-                  <span className="type-badge small">{restaurant.type}</span>
-                </td>
-                <td className="price-cell">~{restaurant.price}€</td>
-                <td className="grade-cell">
-                  {restaurant.grade ? (
-                    <span className={`grade ${restaurant.grade >= 9 ? 'high' : restaurant.grade >= 7 ? 'medium' : 'low'}`}>
-                      ⭐ {restaurant.grade}
-                    </span>
-                  ) : (
-                    <span className="no-grade">-</span>
-                  )}
-                </td>
-                <td className="location-cell">{restaurant.location ? `📍 ${restaurant.location}` : '-'}</td>
-                <td className="note-cell">{restaurant.note || '-'}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="cards-container">
+        <div className="sort-controls">
+          <span>Ordenar por:</span>
+          <button
+            className={`sort-btn ${sortField === 'name' ? 'active' : ''}`}
+            onClick={() => handleSort('name')}
+          >
+            Nombre {sortField === 'name' && (sortDirection === 'asc' ? '↑' : '↓')}
+          </button>
+          <button
+            className={`sort-btn ${sortField === 'price' ? 'active' : ''}`}
+            onClick={() => handleSort('price')}
+          >
+            Precio {sortField === 'price' && (sortDirection === 'asc' ? '↑' : '↓')}
+          </button>
+          <button
+            className={`sort-btn ${sortField === 'grade' ? 'active' : ''}`}
+            onClick={() => handleSort('grade')}
+          >
+            Nota {sortField === 'grade' && (sortDirection === 'asc' ? '↑' : '↓')}
+          </button>
+        </div>
+
+        <div className="restaurant-cards">
+          {filteredAndSorted.map((restaurant, index) => (
+            <div
+              key={restaurant.id}
+              className="restaurant-card"
+              style={{ animationDelay: `${index * 0.02}s` }}
+            >
+              <div className="card-header">
+                <span className="card-emoji">{TYPE_EMOJIS[restaurant.type] || '🍽️'}</span>
+                <div className="card-title">
+                  <h3>{restaurant.name}</h3>
+                  <span className="card-type">{restaurant.type}</span>
+                </div>
+                {restaurant.grade && (
+                  <span className={`card-grade ${restaurant.grade >= 9 ? 'high' : restaurant.grade >= 7 ? 'medium' : 'low'}`}>
+                    ⭐ {restaurant.grade}
+                  </span>
+                )}
+              </div>
+              <div className="card-details">
+                <span className="card-price">~{restaurant.price}€/persona</span>
+                {restaurant.location && <span className="card-location">📍 {restaurant.location}</span>}
+              </div>
+              {restaurant.note && <p className="card-note">{restaurant.note}</p>}
+            </div>
+          ))}
+        </div>
       </div>
 
       {showModal && (
