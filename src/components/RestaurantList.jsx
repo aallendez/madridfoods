@@ -60,10 +60,10 @@ function RestaurantList({ restaurants, addRestaurant }) {
         </button>
         <h1>📍 Todos los sitios</h1>
         <button
-          className="btn btn-primary btn-sm"
-          onClick={() => setShowModal(true)}
+          className="btn btn-disabled btn-sm"
+          disabled
         >
-          ➕ Añadir
+          ➕ Añadir <span className="coming-soon">Soon</span>
         </button>
       </div>
 

@@ -187,10 +187,10 @@ function HomePage({ restaurants, addRestaurant }) {
               📋 Ver todos los sitios
             </button>
             <button
-              className="btn btn-primary"
-              onClick={() => setShowModal(true)}
+              className="btn btn-disabled"
+              disabled
             >
-              ➕ Añadir sitio
+              ➕ Añadir sitio <span className="coming-soon">Coming soon</span>
             </button>
           </div>
         </div>

@@ -369,6 +369,29 @@ input, textarea, select, button, a {
   background: var(--surface-hover);
 }
 
+.btn-disabled {
+  background: var(--surface);
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.btn-disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.coming-soon {
+  font-size: 0.65rem;
+  background: var(--text-muted);
+  color: var(--background);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
 /* ============================================
    SEARCH RESULTS
    ============================================ */
