@@ -22,6 +22,14 @@ const RESTAURANT_TYPES = [
 
 const PRICE_OPTIONS = [10, 15, 20, 25, 30, 35, 40, 50]
 
+const SITUATION_OPTIONS = [
+  { value: 'cita', label: '💕 Cita', emoji: '💕' },
+  { value: 'amigos', label: '👯 Amigos', emoji: '👯' },
+  { value: 'familia', label: '👨‍👩‍👧‍👦 Familia', emoji: '👨‍👩‍👧‍👦' },
+  { value: 'trabajo', label: '💼 Trabajo', emoji: '💼' },
+  { value: 'solo', label: '🧘 Solo', emoji: '🧘' }
+]
+
 function AddRestaurantModal({ onClose, onAdd, existingRestaurants }) {
   const [formData, setFormData] = useState({
     name: '',
@@ -29,7 +37,9 @@ function AddRestaurantModal({ onClose, onAdd, existingRestaurants }) {
     location: '',
     price: 20,
     grade: '',
-    note: ''
+    note: '',
+    chain: false,
+    situations: []
   })
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
@@ -71,18 +81,32 @@ function AddRestaurantModal({ onClose, onAdd, existingRestaurants }) {
         location: formData.location.trim(),
         price: parseInt(formData.price),
         grade: formData.grade ? parseFloat(formData.grade) : null,
-        note: formData.note.trim()
+        note: formData.note.trim(),
+        chain: formData.chain,
+        situations: formData.situations
       })
       onClose()
     }
   }
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
+    const { name, value, type, checked } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }))
     if (submitted) {
       setErrors(prev => ({ ...prev, [name]: '' }))
     }
+  }
+
+  const toggleSituation = (situation) => {
+    setFormData(prev => ({
+      ...prev,
+      situations: prev.situations.includes(situation)
+        ? prev.situations.filter(s => s !== situation)
+        : [...prev.situations, situation]
+    }))
   }
 
   return (
@@ -180,6 +204,34 @@ function AddRestaurantModal({ onClose, onAdd, existingRestaurants }) {
               placeholder="Especialidad, ambiente, recomendaciones..."
               rows="2"
             />
+          </div>
+
+          <div className="form-group">
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                name="chain"
+                checked={formData.chain}
+                onChange={handleChange}
+              />
+              <span className="checkbox-text">🏢 Es una cadena (tiene muchos locales)</span>
+            </label>
+          </div>
+
+          <div className="form-group">
+            <label>🎯 Ideal para (opcional)</label>
+            <div className="situation-options">
+              {SITUATION_OPTIONS.map(option => (
+                <button
+                  key={option.value}
+                  type="button"
+                  className={`situation-btn ${formData.situations.includes(option.value) ? 'active' : ''}`}
+                  onClick={() => toggleSituation(option.value)}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="modal-actions">

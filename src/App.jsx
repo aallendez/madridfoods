@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import Papa from 'papaparse'
 import HomePage from './components/HomePage'
 import RestaurantList from './components/RestaurantList'
+import { Analytics } from "@vercel/analytics/react"
+
 import './App.css'
 
 function App() {
@@ -62,6 +64,7 @@ function App() {
           element={<RestaurantList restaurants={restaurants} addRestaurant={addRestaurant} />}
         />
       </Routes>
+      <Analytics />
     </div>
   )
 }

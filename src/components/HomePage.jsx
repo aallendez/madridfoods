@@ -15,7 +15,7 @@ const suggestions = [
     text: 'Copeo con colegas',
     emoji: '🍻',
     description: 'Bares y tapas para grupos',
-    filters: { types: ['Bares/Tapeo'], note: 'copeo' }
+    filters: { types: ['Bares/Tapeo'] }
   },
   {
     text: 'Comida rápida',
@@ -167,25 +167,31 @@ function HomePage({ restaurants, addRestaurant }) {
       <main className="main-content">
         <div className="search-section">
           <div className="hero-title">
-            <h1>🍴 Madrid Foods</h1>
-            <p className="subtitle">Porque en Madrid se come muy bien ;)</p>
+            <span className="hero-brand">🍴 Madrid Foods</span>
+            <h1>¿Qué plan tienes hoy? 🤔</h1>
           </div>
 
-          <h2>¿Qué plan tienes hoy? 🤔</h2>
-
-          <form onSubmit={handleSearch} className="search-form">
-            <div className="search-input-wrapper">
-              <span className="search-icon">🔍</span>
-              <input
-                type="text"
-                placeholder="Buscar restaurante, tipo de comida..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="search-input"
-              />
-            </div>
-            <button type="submit" className="search-button">Buscar</button>
-          </form>
+          <div className="search-row">
+            <form onSubmit={handleSearch} className="search-form">
+              <div className="search-input-wrapper">
+                <span className="search-icon">🔍</span>
+                <input
+                  type="text"
+                  placeholder="Buscar restaurante, tipo de comida..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="search-input"
+                />
+              </div>
+              <button type="submit" className="search-button">Buscar</button>
+            </form>
+            <button
+              className="btn btn-glass btn-todos"
+              onClick={() => navigate('/todos')}
+            >
+              Ver todos <span className="btn-arrow">→</span>
+            </button>
+          </div>
 
           <div className="suggestions-grid">
             {suggestions.map((suggestion, index) => (
@@ -203,12 +209,6 @@ function HomePage({ restaurants, addRestaurant }) {
           </div>
 
           <div className="action-buttons">
-            <button
-              className="btn btn-glass"
-              onClick={() => navigate('/todos')}
-            >
-              📋 Ver todos los sitios
-            </button>
             <button
               className="btn btn-glass"
               onClick={handleAddClick}
