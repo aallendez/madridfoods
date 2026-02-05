@@ -70,11 +70,17 @@ function RestaurantList({ restaurants, addRestaurant }) {
     return true
   })
 
-  // Group restaurants by type
+  // Group restaurants by type (note first, then alphabetically)
   const groupedByType = types.reduce((acc, type) => {
     const restaurantsOfType = filtered
       .filter(r => r.type === type)
-      .sort((a, b) => a.name.localeCompare(b.name))
+      .sort((a, b) => {
+        const aHasNote = a.note && a.note.trim() !== ''
+        const bHasNote = b.note && b.note.trim() !== ''
+        if (aHasNote && !bHasNote) return -1
+        if (!aHasNote && bHasNote) return 1
+        return a.name.localeCompare(b.name)
+      })
     if (restaurantsOfType.length > 0) {
       acc[type] = restaurantsOfType
     }
@@ -150,6 +156,7 @@ function RestaurantList({ restaurants, addRestaurant }) {
                   key={restaurant.id}
                   className="restaurant-row"
                   style={{ animationDelay: `${index * 0.015}s` }}
+                  onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.name + ' Madrid')}`, '_blank')}
                 >
                   <div className="row-main">
                     <span className="row-name">{restaurant.name}</span>

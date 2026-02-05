@@ -766,6 +766,7 @@ input, textarea, select, button, a {
   transition: background 0.2s ease;
   animation: fadeIn 0.3s ease-out backwards;
   gap: 1rem;
+  cursor: pointer !important;
 }
 
 .restaurant-row:last-child {

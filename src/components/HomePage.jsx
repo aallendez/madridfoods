@@ -132,9 +132,19 @@ function HomePage({ restaurants, addRestaurant }) {
     })
   }
 
+  const sortByNote = (restaurants) => {
+    return [...restaurants].sort((a, b) => {
+      const aHasNote = a.note && a.note.trim() !== ''
+      const bHasNote = b.note && b.note.trim() !== ''
+      if (aHasNote && !bHasNote) return -1
+      if (!aHasNote && bHasNote) return 1
+      return a.name.localeCompare(b.name)
+    })
+  }
+
   const handleSuggestionClick = (suggestion) => {
     setActiveSuggestion(suggestion.text)
-    const results = filterRestaurants(suggestion.filters)
+    const results = sortByNote(filterRestaurants(suggestion.filters))
     setSearchResults(results)
     setSearchTerm('')
   }
@@ -150,7 +160,7 @@ function HomePage({ restaurants, addRestaurant }) {
       r.note.toLowerCase().includes(term) ||
       r.location.toLowerCase().includes(term)
     )
-    setSearchResults(results)
+    setSearchResults(sortByNote(results))
     setActiveSuggestion(`Búsqueda: "${searchTerm}"`)
   }
 

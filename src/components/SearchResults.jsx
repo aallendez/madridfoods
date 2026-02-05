@@ -24,6 +24,7 @@ function SearchResults({ results, title, onClose }) {
                 key={restaurant.id}
                 className="restaurant-row"
                 style={{ animationDelay: `${index * 0.015}s` }}
+                onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.name + ' Madrid')}`, '_blank')}
               >
                 <div className="row-main">
                   <span className="row-emoji">{TYPE_EMOJIS[restaurant.type] || '🍽️'}</span>
