@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import AddRestaurantModal from './AddRestaurantModal'
 import SearchResults from './SearchResults'
 import PasswordModal from './PasswordModal'
+import NeighborhoodMap from './NeighborhoodMap'
 
 const suggestions = [
   {
@@ -88,7 +89,7 @@ export const TYPE_EMOJIS = {
 
 const SECRET_CODE = 'madridmola'
 
-function HomePage({ restaurants, addRestaurant }) {
+function HomePage({ restaurants, addRestaurant, userActions, lastUpdated }) {
   const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
   const [showModal, setShowModal] = useState(false)
@@ -96,6 +97,9 @@ function HomePage({ restaurants, addRestaurant }) {
   const [searchResults, setSearchResults] = useState(null)
   const [activeSuggestion, setActiveSuggestion] = useState(null)
   const [isUnlocked, setIsUnlocked] = useState(false)
+  const [showNeighborhoods, setShowNeighborhoods] = useState(false)
+
+  const { visitedCount, favoritesCount, toggleVisited, toggleFavorite, isVisited, isFavorite, favorites } = userActions
 
   const handleAddClick = () => {
     if (isUnlocked) {
@@ -170,6 +174,31 @@ function HomePage({ restaurants, addRestaurant }) {
     setSearchTerm('')
   }
 
+  const handleShowFavorites = () => {
+    if (favoritesCount === 0) return
+    const favoriteRestaurants = restaurants.filter(r => favorites.includes(r.id))
+    setSearchResults(sortByNote(favoriteRestaurants))
+    setActiveSuggestion('Mis favoritos')
+  }
+
+  const handleZoneClick = (zone) => {
+    const results = restaurants.filter(r => r.location === zone)
+    setSearchResults(sortByNote(results))
+    setActiveSuggestion(`Zona: ${zone}`)
+    setShowNeighborhoods(false)
+  }
+
+  const formatLastUpdated = (date) => {
+    if (!date) return null
+    const now = new Date()
+    const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24))
+    if (diffDays === 0) return 'hoy'
+    if (diffDays === 1) return 'ayer'
+    if (diffDays < 7) return `hace ${diffDays} días`
+    if (diffDays < 30) return `hace ${Math.floor(diffDays / 7)} semanas`
+    return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })
+  }
+
   return (
     <div className="home-page">
       <div className="background-gradient"></div>
@@ -179,6 +208,29 @@ function HomePage({ restaurants, addRestaurant }) {
           <div className="hero-title">
             <span className="hero-brand">🍴 Madrid Foods</span>
             <h1>¿Qué plan tienes hoy? 🤔</h1>
+          </div>
+
+          {/* Progress Stats */}
+          <div className="user-stats">
+            <button
+              className={`stat-chip ${favoritesCount > 0 ? 'clickable' : ''}`}
+              onClick={handleShowFavorites}
+              disabled={favoritesCount === 0}
+            >
+              <span className="stat-icon">❤️</span>
+              <span className="stat-text">{favoritesCount} favoritos</span>
+            </button>
+            <div className="stat-chip">
+              <span className="stat-icon">✅</span>
+              <span className="stat-text">{visitedCount}/{restaurants.length} visitados</span>
+            </div>
+            <button
+              className="stat-chip clickable"
+              onClick={() => setShowNeighborhoods(!showNeighborhoods)}
+            >
+              <span className="stat-icon">📍</span>
+              <span className="stat-text">Barrios</span>
+            </button>
           </div>
 
           <div className="search-row">
@@ -211,6 +263,13 @@ function HomePage({ restaurants, addRestaurant }) {
             </div>
           </div>
 
+          {showNeighborhoods && (
+            <NeighborhoodMap
+              restaurants={restaurants}
+              onZoneClick={handleZoneClick}
+            />
+          )}
+
           <div className="suggestions-grid">
             {suggestions.map((suggestion, index) => (
               <button
@@ -232,12 +291,18 @@ function HomePage({ restaurants, addRestaurant }) {
             results={searchResults}
             title={activeSuggestion}
             onClose={clearResults}
+            userActions={userActions}
           />
         )}
       </main>
 
       <footer className="footer">
         <p>🇪🇸 Built by <a href="https://juan.aallende.com" target="_blank" rel="noopener noreferrer">Juan</a> in Madrid, Spain. Data by Nacho ;)</p>
+        {lastUpdated && (
+          <p className="last-updated">
+            📅 Actualizado {formatLastUpdated(lastUpdated)} · {restaurants.length} restaurantes
+          </p>
+        )}
       </footer>
 
       {showPasswordModal && (

@@ -1176,6 +1176,247 @@ input, textarea, select, button, a {
    RESPONSIVE
    ============================================ */
 
+/* ============================================
+   USER STATS & PROGRESS
+   ============================================ */
+
+.user-stats {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.5s ease-out 0.1s backwards;
+}
+
+.stat-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+.stat-chip.clickable {
+  cursor: pointer !important;
+}
+
+.stat-chip.clickable:hover {
+  background: var(--surface-hover);
+  border-color: var(--secondary);
+  color: var(--text);
+}
+
+.stat-chip:disabled {
+  opacity: 0.5;
+}
+
+.stat-icon {
+  font-size: 1rem;
+}
+
+.stat-text {
+  font-weight: 500;
+}
+
+/* Progress Bar */
+.progress-section {
+  max-width: calc(100% - 4rem);
+  margin: 0 auto 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  animation: fadeIn 0.4s ease-out;
+}
+
+.progress-bar-container {
+  height: 8px;
+  background: var(--surface);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--gradient-4);
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  display: block;
+}
+
+/* ============================================
+   ACTION BUTTONS (FAVORITE/VISITED)
+   ============================================ */
+
+.row-actions {
+  display: flex;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  cursor: pointer !important;
+}
+
+.action-btn:hover {
+  background: var(--surface-hover);
+  transform: scale(1.1);
+}
+
+.action-btn.active {
+  background: var(--surface-hover);
+  border-color: var(--secondary);
+}
+
+.restaurant-row.visited {
+  opacity: 0.7;
+}
+
+.restaurant-row.visited .row-name {
+  text-decoration: line-through;
+  text-decoration-color: var(--secondary);
+}
+
+/* ============================================
+   NEIGHBORHOOD MAP
+   ============================================ */
+
+.neighborhood-map {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.neighborhood-header {
+  margin-bottom: 1.25rem;
+}
+
+.neighborhood-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.neighborhood-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.zones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.zone-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+  cursor: pointer !important;
+  animation: fadeIn 0.3s ease-out backwards;
+}
+
+.zone-row:hover {
+  background: var(--surface-hover);
+}
+
+.zone-name {
+  font-size: 0.9rem;
+  color: var(--text);
+  min-width: 120px;
+  font-weight: 500;
+}
+
+.zone-bar-container {
+  flex: 1;
+  height: 8px;
+  background: var(--surface);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.zone-bar {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease;
+}
+
+.zone-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  min-width: 30px;
+  text-align: right;
+}
+
+.neighborhood-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.chains-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   LAST UPDATED BADGE
+   ============================================ */
+
+.last-updated {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+.list-footer {
+  padding: 1.5rem;
+  text-align: center;
+  max-width: calc(100% - 4rem);
+  margin: 0 auto;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
 @media (max-width: 768px) {
   .hero-title h1 {
     font-size: 2.25rem;
@@ -1326,5 +1567,49 @@ input, textarea, select, button, a {
   .row-note {
     max-width: 100%;
     white-space: normal;
+  }
+
+  /* User stats mobile */
+  .user-stats {
+    gap: 0.5rem;
+  }
+
+  .stat-chip {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  /* Progress section mobile */
+  .progress-section {
+    max-width: calc(100% - 2rem);
+    margin: 0 1rem 1rem;
+  }
+
+  /* Neighborhood map mobile */
+  .neighborhood-map {
+    padding: 1rem;
+  }
+
+  .zone-name {
+    min-width: 80px;
+    font-size: 0.8rem;
+  }
+
+  .zone-count {
+    min-width: 25px;
+  }
+
+  /* Action buttons mobile */
+  .row-actions {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .action-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
   }
 }

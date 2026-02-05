@@ -26,13 +26,16 @@ const TYPE_ORDER = [
 
 const SECRET_CODE = 'madridmola'
 
-function RestaurantList({ restaurants, addRestaurant }) {
+function RestaurantList({ restaurants, addRestaurant, userActions, lastUpdated }) {
   const navigate = useNavigate()
   const [showModal, setShowModal] = useState(false)
   const [showPasswordModal, setShowPasswordModal] = useState(false)
   const [filterType, setFilterType] = useState('')
   const [filterPrice, setFilterPrice] = useState('')
+  const [filterSpecial, setFilterSpecial] = useState('')
   const [isUnlocked, setIsUnlocked] = useState(false)
+
+  const { toggleVisited, toggleFavorite, isVisited, isFavorite, visitedCount, favoritesCount, favorites } = userActions
 
   const handleAddClick = () => {
     if (isUnlocked) {
@@ -52,6 +55,11 @@ function RestaurantList({ restaurants, addRestaurant }) {
     return false
   }
 
+  const handleAction = (e, action, id) => {
+    e.stopPropagation()
+    action(id)
+  }
+
   const types = [...new Set(restaurants.map(r => r.type))].sort((a, b) => {
     const aIndex = TYPE_ORDER.indexOf(a)
     const bIndex = TYPE_ORDER.indexOf(b)
@@ -67,6 +75,9 @@ function RestaurantList({ restaurants, addRestaurant }) {
       const [min, max] = filterPrice.split('-').map(Number)
       if (r.price < min || r.price > max) return false
     }
+    if (filterSpecial === 'favorites' && !favorites.includes(r.id)) return false
+    if (filterSpecial === 'visited' && !isVisited(r.id)) return false
+    if (filterSpecial === 'unvisited' && isVisited(r.id)) return false
     return true
   })
 
@@ -88,6 +99,17 @@ function RestaurantList({ restaurants, addRestaurant }) {
   }, {})
 
   const totalFiltered = filtered.length
+
+  const formatLastUpdated = (date) => {
+    if (!date) return null
+    const now = new Date()
+    const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24))
+    if (diffDays === 0) return 'hoy'
+    if (diffDays === 1) return 'ayer'
+    if (diffDays < 7) return `hace ${diffDays} días`
+    if (diffDays < 30) return `hace ${Math.floor(diffDays / 7)} semanas`
+    return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })
+  }
 
   return (
     <div className="restaurant-list-page">
@@ -137,8 +159,35 @@ function RestaurantList({ restaurants, addRestaurant }) {
           </select>
         </div>
 
+        <div className="filter-group">
+          <label>🎯 Mis listas</label>
+          <select
+            value={filterSpecial}
+            onChange={(e) => setFilterSpecial(e.target.value)}
+            className="filter-select"
+          >
+            <option value="">Todos</option>
+            <option value="favorites">❤️ Favoritos ({favoritesCount})</option>
+            <option value="visited">✅ Visitados ({visitedCount})</option>
+            <option value="unvisited">⬜ Sin visitar ({restaurants.length - visitedCount})</option>
+          </select>
+        </div>
+
         <span className="results-info">
           📊 {totalFiltered} de {restaurants.length} sitios
+        </span>
+      </div>
+
+      {/* Progress bar */}
+      <div className="progress-section">
+        <div className="progress-bar-container">
+          <div
+            className="progress-bar"
+            style={{ width: `${(visitedCount / restaurants.length) * 100}%` }}
+          />
+        </div>
+        <span className="progress-text">
+          Has probado {visitedCount} de {restaurants.length} sitios ({Math.round((visitedCount / restaurants.length) * 100)}%)
         </span>
       </div>
 
@@ -154,7 +203,7 @@ function RestaurantList({ restaurants, addRestaurant }) {
               {restaurantsOfType.map((restaurant, index) => (
                 <div
                   key={restaurant.id}
-                  className="restaurant-row"
+                  className={`restaurant-row ${isVisited(restaurant.id) ? 'visited' : ''}`}
                   style={{ animationDelay: `${index * 0.015}s` }}
                   onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.name + ' Madrid')}`, '_blank')}
                 >
@@ -175,12 +224,37 @@ function RestaurantList({ restaurants, addRestaurant }) {
                     ) : null}
                     {restaurant.note && <span className="row-note">{restaurant.note}</span>}
                   </div>
+                  <div className="row-actions">
+                    <button
+                      className={`action-btn favorite-btn ${isFavorite(restaurant.id) ? 'active' : ''}`}
+                      onClick={(e) => handleAction(e, toggleFavorite, restaurant.id)}
+                      title={isFavorite(restaurant.id) ? 'Quitar de favoritos' : 'Añadir a favoritos'}
+                    >
+                      {isFavorite(restaurant.id) ? '❤️' : '🤍'}
+                    </button>
+                    <button
+                      className={`action-btn visited-btn ${isVisited(restaurant.id) ? 'active' : ''}`}
+                      onClick={(e) => handleAction(e, toggleVisited, restaurant.id)}
+                      title={isVisited(restaurant.id) ? 'Marcar como no visitado' : 'Marcar como visitado'}
+                    >
+                      {isVisited(restaurant.id) ? '✅' : '⬜'}
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         ))}
       </div>
+
+      {/* Footer with last updated */}
+      <footer className="list-footer">
+        {lastUpdated && (
+          <p className="last-updated">
+            📅 Actualizado {formatLastUpdated(lastUpdated)}
+          </p>
+        )}
+      </footer>
 
       {showPasswordModal && (
         <PasswordModal

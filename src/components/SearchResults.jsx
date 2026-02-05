@@ -1,6 +1,13 @@
 import { TYPE_EMOJIS } from './HomePage'
 
-function SearchResults({ results, title, onClose }) {
+function SearchResults({ results, title, onClose, userActions }) {
+  const { toggleVisited, toggleFavorite, isVisited, isFavorite } = userActions || {}
+
+  const handleAction = (e, action, id) => {
+    e.stopPropagation()
+    action?.(id)
+  }
+
   return (
     <div className="search-results">
       <div className="results-header">
@@ -22,7 +29,7 @@ function SearchResults({ results, title, onClose }) {
             {results.map((restaurant, index) => (
               <div
                 key={restaurant.id}
-                className="restaurant-row"
+                className={`restaurant-row ${isVisited?.(restaurant.id) ? 'visited' : ''}`}
                 style={{ animationDelay: `${index * 0.015}s` }}
                 onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.name + ' Madrid')}`, '_blank')}
               >
@@ -45,6 +52,24 @@ function SearchResults({ results, title, onClose }) {
                   ) : null}
                   {restaurant.note && <span className="row-note">{restaurant.note}</span>}
                 </div>
+                {userActions && (
+                  <div className="row-actions">
+                    <button
+                      className={`action-btn favorite-btn ${isFavorite?.(restaurant.id) ? 'active' : ''}`}
+                      onClick={(e) => handleAction(e, toggleFavorite, restaurant.id)}
+                      title={isFavorite?.(restaurant.id) ? 'Quitar de favoritos' : 'Añadir a favoritos'}
+                    >
+                      {isFavorite?.(restaurant.id) ? '❤️' : '🤍'}
+                    </button>
+                    <button
+                      className={`action-btn visited-btn ${isVisited?.(restaurant.id) ? 'active' : ''}`}
+                      onClick={(e) => handleAction(e, toggleVisited, restaurant.id)}
+                      title={isVisited?.(restaurant.id) ? 'Marcar como no visitado' : 'Marcar como visitado'}
+                    >
+                      {isVisited?.(restaurant.id) ? '✅' : '⬜'}
+                    </button>
+                  </div>
+                )}
               </div>
             ))}
           </div>

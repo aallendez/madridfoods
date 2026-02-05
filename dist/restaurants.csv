@@ -1,0 +1,315 @@
+name,type,location,price,grade,note,chain
+Divina Dolores,Bares/Tapeo,Montecarmelo,20,,,false
+Santoria,Bares/Tapeo,Barrio de las Letras,20,,,false
+Camerino,Bares/Tapeo,Príncipe de Vergara,30,,Cena y cocktails,false
+Zafyro café club,Bares/Tapeo,,20,,,false
+Manero,Bares/Tapeo,,20,,,false
+Wanderlust,Bares/Tapeo,,20,,,false
+Bar Herjomar,Bares/Tapeo,,20,,,false
+Replay Outlet Cafe,Bares/Tapeo,,20,,Bar/restaurante de juegos,false
+Solo de croquetas,Bares/Tapeo,,15,,,false
+La más croqueta,Bares/Tapeo,,15,,,false
+La Mentira,Bares/Tapeo,Chamberí,20,,Bingo los miércoles,false
+Bar Malos,Bares/Tapeo,,15,,,false
+El Sitio,Bares/Tapeo,,20,,,false
+Marta Cariño,Bares/Tapeo,Callao,25,,Copeo,false
+La Manuela,Bares/Tapeo,,20,,Con juegos de mesa,false
+El Viajero,Bares/Tapeo,La Latina,30,,,false
+Sala de Despiece,Bares/Tapeo,Ponzano,30,,,false
+La Bocateria,Bares/Tapeo,Calle Fernando VI,15,,,false
+Baby Bull,Bares/Tapeo,,25,,Copas,false
+Salmon Guru,Bares/Tapeo,Barrio de las Letras,30,,Cocktails,false
+Blue Moon,Bares/Tapeo,,25,,,false
+Amargo a place to be,Bares/Tapeo,,25,,,false
+Ramses,Bares/Tapeo,,40,,Copeo - Premium,false
+THE HAT,Bares/Tapeo,La Latina,25,,Azotea,false
+Lateral,Bares/Tapeo,,25,,,true
+Shaka!,Bares/Tapeo,,15,,Crepes,false
+Guasa,Bares/Tapeo,,20,,,false
+Ritasibarita,Bares/Tapeo,Montecarmelo,20,8,,false
+Volapie,Bares/Tapeo,,15,7,,true
+Cherry Pecas,Bares/Tapeo,Chamberí,20,8.5,,false
+Barra,Bares/Tapeo,,20,8,,false
+El Kiosko,Bares/Tapeo,,20,8.5,,true
+Bel Mondo,Italiano,Salamanca,40,,Premium,false
+Popolare,Italiano,Azca,25,,,false
+Isabella,Italiano,,25,,,false
+L'Antica Trattoria,Italiano,,25,,,false
+Bosco de Lobos,Italiano,,25,,,false
+My Pasta Room,Italiano,,10,,10-14€,false
+Malafemma,Italiano,,25,,22-25€,false
+Trattoria Pulcinella,Italiano,,20,,15-24€,false
+Numa Pompilio,Italiano,,35,,Premium,false
+Ornella,Italiano,,25,,22-25€,false
+Pummarola,Italiano,,15,,13-20€,false
+Aió,Italiano,,20,,,false
+Letteria Trattoria,Italiano,,20,,,false
+Filippo,Italiano,,20,,Pizza,false
+La Pizza è Bella,Italiano,,10,,Pasta carbonara,false
+Fratelli d'Italia,Italiano,,10,,,false
+Mama Chicó,Italiano,,20,,18-20€,false
+Pastaio,Italiano,,15,,11-15€,false
+Chicago Style,Italiano,,15,,Pizzeria,false
+400º Pizza,Italiano,,15,,,false
+Misteri O1,Italiano,,10,,,false
+Bulla,Italiano,,20,,16-20€,false
+Villa Capri,Italiano,Salesas,20,,,false
+La Pizzería,Italiano,,15,,,false
+Pizzart,Italiano,,15,,12-15€,false
+Toto e Pepino,Italiano,,20,,,false
+Bizzo!,Italiano,,15,,,false
+Mena Pulían Food,Italiano,,10,,Italian street food,false
+Ravioluzione,Italiano,Tetuán,15,9,13-15€,false
+Ginos,Italiano,,15,9,,true
+Grosso Napoletano,Italiano,,15,8,,true
+Tagliatella,Italiano,,20,8.5,,true
+Fellina,Italiano,Chamberí,25,9,,false
+Oven,Italiano,,20,9,,true
+Frida Frijol,Mexicano,,20,,,false
+Takomamma,Mexicano,,15,,,false
+Pepe Taco,Mexicano,,15,,,false
+La Venganza de Malinche,Mexicano,,20,,,false
+El Chaparrito,Mexicano,,15,,,false
+Tako Away,Mexicano,,10,,,false
+Nacho Bravo,Mexicano,,15,,,false
+Ole Mole,Mexicano,,20,,,false
+Delic,Mexicano,,20,,,false
+Cascabel,Mexicano,,20,,,false
+Si Señor,Mexicano,,15,,,false
+The Mex,Mexicano,,15,,,false
+La Hermosillo,Mexicano,,20,,Tapeo mexicano,false
+Pico de Gallo,Mexicano,,15,,,false
+Santita Cabron,Mexicano,,20,,,false
+Julieta Lemon,Mexicano,,20,,,false
+Tepic,Mexicano,,25,,,false
+Chirrion,Mexicano,,20,,,false
+Brutal Burrito,Mexicano,,10,,,false
+La Tía Juana,Mexicano,,20,,,false
+Gracias Padre,Mexicano,Salamanca,25,9,,false
+La Mordida,Mexicano,,20,8,,true
+Tierra Burrito,Mexicano,,10,8,,true
+Tiki Taco,Mexicano,,15,8,,false
+Porneat Burger,Hamburguesas/Americana,,15,,,false
+Muerdo Burger,Hamburguesas/Americana,,15,,,false
+Frankie Burger,Hamburguesas/Americana,,15,,,false
+El Círculo de Carlos Maldonado,Hamburguesas/Americana,,20,,,false
+HotNow,Hamburguesas/Americana,,15,,Pizzas,false
+Galipán,Hamburguesas/Americana,,10,,Hotdogs,false
+Bendita Burger,Hamburguesas/Americana,,15,,14-16€,false
+Graal,Hamburguesas/Americana,,15,,13-15€,false
+La 5ª con Madison,Hamburguesas/Americana,,15,,,false
+Steak Burger Bar,Hamburguesas/Americana,,15,,12-15€,true
+Home Burger Bar,Hamburguesas/Americana,,15,,,false
+Paperboy Hotdog,Hamburguesas/Americana,,10,,7-9€,false
+Donoso,Hamburguesas/Americana,,10,,5€,false
+La Prensa,Hamburguesas/Americana,,10,,,false
+Juancho's,Hamburguesas/Americana,,15,,14-15€,false
+Burmet,Hamburguesas/Americana,,15,,Nachos,false
+Alfredo's Barbacoa,Hamburguesas/Americana,,15,,12-15€,true
+Tennessee BBQ,Hamburguesas/Americana,,15,,12-15€,false
+MEAT,Hamburguesas/Americana,,15,,12-14€,false
+Jimbo Smokehouse,Hamburguesas/Americana,,15,,12-15€,false
+Clandestino Burger,Hamburguesas/Americana,,15,,,false
+La H es Muda,Hamburguesas/Americana,,15,,13-15€,false
+La Bistroteca,Hamburguesas/Americana,,20,,18-20€,false
+Bentley's Burger,Hamburguesas/Americana,,20,,14-20€,false
+CRÖMIA,Hamburguesas/Americana,,15,,,false
+Burnout,Hamburguesas/Americana,,10,,10-13€,false
+The Irish Rover,Hamburguesas/Americana,,15,,11-15€,false
+Jolliebee,Hamburguesas/Americana,,10,,Pollo,true
+Big Papa,Hamburguesas/Americana,,10,,Patatas fritas,false
+Bunji,Hamburguesas/Americana,,15,,,false
+Leña by Dani García,Hamburguesas/Americana,,50,,Premium,false
+Knight n' Squire,Hamburguesas/Americana,,20,,Primera hamburgueseria,false
+Rancho de Santa Africa,Hamburguesas/Americana,,15,,,false
+Mad Cafe,Hamburguesas/Americana,,15,,,false
+Alright,Hamburguesas/Americana,,15,,,false
+Berty's,Hamburguesas/Americana,,15,,,false
+VICIO,Hamburguesas/Americana,,20,9.5,17.8€,true
+Toro Burger,Hamburguesas/Americana,,15,9,12-14€,true
+The Fitzgerald,Hamburguesas/Americana,,10,9.5,11€,true
+Junk Burger,Hamburguesas/Americana,Chamberí,10,8.5,7-12€,false
+Five Guys,Hamburguesas/Americana,,15,8.5,,true
+Johnny Rockets,Hamburguesas/Americana,,15,9,,true
+New York Burger,Hamburguesas/Americana,,20,9.5,,true
+Goiko Grill,Hamburguesas/Americana,,15,9,,true
+Pic&Nic,Hamburguesas/Americana,,15,8.5,,false
+Taxi a Manhattan,Hamburguesas/Americana,,15,7.5,,false
+Friday's,Hamburguesas/Americana,,20,9,,true
+The Cachopu Factory,Española/Mediterránea,,10,,7€,false
+D. Origen,Española/Mediterránea,C/Gaztambide 62,20,,,false
+Urumea,Española/Mediterránea,,20,,Cachopo,false
+Nimú,Española/Mediterránea,,25,,,false
+Niquel,Española/Mediterránea,,25,,,false
+En la Charca Taberna,Española/Mediterránea,,20,,Cachopo,false
+La Fondue de Tell,Española/Mediterránea,,30,,Fondue,false
+Cafe Melos,Española/Mediterránea,,15,,,false
+Salitre,Española/Mediterránea,,20,,,false
+Papúa,Española/Mediterránea,,25,,,false
+Marconi,Española/Mediterránea,,25,,,false
+Tanteo,Española/Mediterránea,,25,,,false
+Café Santander,Española/Mediterránea,,20,,Tortilla y tarta de queso,false
+Casa Carola,Española/Mediterránea,,25,,,false
+La Penela Velázquez,Española/Mediterránea,,20,,Tortilla y carne asada (OCAFU),false
+Bocanegra,Española/Mediterránea,,25,,,false
+El Pontón,Española/Mediterránea,,15,,Tortilla,false
+Bodega la Ardosa,Española/Mediterránea,Malasaña,15,,Tortilla,false
+La Primera,Española/Mediterránea,,20,,,false
+Rosi la Loca,Española/Mediterránea,,20,,,false
+Viridiana,Española/Mediterránea,,40,,,false
+La Madreña,Española/Mediterránea,,25,,,false
+Pez Tortilla,Española/Mediterránea,,15,,,true
+Casa Dani,Española/Mediterránea,Mercado de la Paz,15,,Tortilla de patata,false
+Los Huevos de Lucio,Española/Mediterránea,,25,,,false
+La Bienquerida,Española/Mediterránea,,20,,,false
+El Jefe Traveling Food,Española/Mediterránea,,15,,,false
+Cuatro de Ocho,Española/Mediterránea,,30,,,false
+Makkila,Española/Mediterránea,,30,,,false
+Hakuna Patata,Española/Mediterránea,,10,,Domicilio,false
+Perretxico,Española/Mediterránea,,20,,,false
+Tal Cual,Española/Mediterránea,,20,,,false
+Camino,Española/Mediterránea,,20,,,false
+Santerra,Española/Mediterránea,,20,,Croquetas,false
+Zalamero,Española/Mediterránea,,15,,Croquetas,false
+Casa Mortero,Española/Mediterránea,,15,,Croquetas,false
+Colósimo,Española/Mediterránea,,20,,Croquetas,false
+Sylkar,Española/Mediterránea,,15,,Tortilla,false
+Diurno,Española/Mediterránea,,25,,,false
+Marte,Española/Mediterránea,,25,,,false
+La Pepa,Española/Mediterránea,,15,,Tortilla,false
+Cañadío,Española/Mediterránea,,25,,Tortilla,false
+Los Ochoa,Española/Mediterránea,,20,,,false
+El Columpio,Española/Mediterránea,,25,,,false
+Morgana,Española/Mediterránea,,25,,,false
+El Bareto,Española/Mediterránea,,20,,,false
+Jaleito,Española/Mediterránea,,20,,,false
+Maracca,Española/Mediterránea,,20,,,false
+La Valentina,Española/Mediterránea,,20,,,false
+La Redonda,Española/Mediterránea,Pozuelo,25,,,false
+Couzapín,Española/Mediterránea,Retiro,25,10,Asturiano - Cachopo,false
+Perrachica,Española/Mediterránea,,25,8,,true
+Habanera,Española/Mediterránea,,30,8.5,,true
+Txirimiri,Española/Mediterránea,La Latina,20,9,Tortilla,false
+La Maruca,Española/Mediterránea,,25,10,,true
+La Bientirada,Española/Mediterránea,Chamberí,20,9,,false
+OCAFÚ,Española/Mediterránea,Salamanca,25,10,,false
+Saona,Española/Mediterránea,,20,9.5,,true
+El Pimiento Verde,Española/Mediterránea,Salamanca,25,8.5,,false
+Lobito de Mar,Española/Mediterránea,Salamanca,40,8.5,Premium,false
+Roostiq,Española/Mediterránea,Chueca,35,10,Premium,false
+Tandoori Station,Indio,,15,,,false
+SAGAR,Indio,,15,,,false
+Mughul,Indio,,20,,,false
+Curry Masala,Indio,,15,,,false
+Purnima,Indio,,15,,,false
+Anapurna,Indio,,20,,,false
+Dolí,Indio,,15,,,false
+Taj Mahal,Indio,Plaza de España,20,8,,false
+Igo Ramen,Asiático,,15,,,false
+Ra-men Kagura,Asiático,,15,,,false
+Ramen Shifu,Asiático,,15,,,false
+BiangBiang Bar,Asiático,,15,,,false
+Lou's Hotpot,Asiático,,25,,,false
+Gyoza Go,Asiático,,15,,,false
+Bao,Asiático,,15,,,false
+Torikey,Asiático,,20,,,false
+Zen Market,Asiático,,15,,,false
+Maki,Asiático,,20,,,false
+Miss Sushi,Asiático,,20,,,true
+Tuktuk,Asiático,,20,,,false
+Gayagum,Asiático,,20,,Comida coreana,false
+Casa Bulgogi,Asiático,,20,,Comida coreana,false
+Thai Orchid,Asiático,,25,,Comida thai,false
+Krachai Cuisine,Asiático,,25,,Comida thai,false
+Macao,Asiático,,25,,Fusión,false
+Running Sushi,Asiático,,20,,,false
+Sushi Shop,Asiático,,25,,,true
+Konnichiwa,Asiático,,20,,,false
+La Monarracha,Asiático,,20,,,false
+Sushiwakka,Asiático,,30,,,false
+Maitake,Asiático,,25,,,false
+Art & Sushi,Asiático,,25,,,false
+Hong Kong,Asiático,,15,,,false
+Don Lay,Asiático,,15,,,false
+Yatai Market,Asiático,,20,,,false
+Soy Sohho,Asiático,C/Ayala 87,20,,,false
+Mavera Restaurante,Asiático,,20,,Comida turca,false
+Amazonica Chic,Asiático,,35,7.5,,false
+Monsieur Sushita,Asiático,,30,9,,true
+Madame Sushita,Asiático,,35,10,,true
+99 Sushi Bar,Asiático,,50,9,Premium,true
+Sumo,Asiático,,25,8.5,,true
+La Fonda,Sudamericano,,20,,,false
+Pollo y Carbón,Sudamericano,,15,,Comida peruana,false
+Magasand,Desayuno/Merienda,,15,,,false
+Dottys Rolls,Desayuno/Merienda,,10,,,false
+Mazál Bagels & Cafe,Desayuno/Merienda,,15,,,false
+La Rollerie,Desayuno/Merienda,,15,,,true
+La Mejor Tarta de Chocolate del Mundo,Desayuno/Merienda,,15,,,false
+Bô Speciality Coffee,Desayuno/Merienda,,10,,,false
+Churrería Manosanta,Desayuno/Merienda,,10,,,false
+Maison Palmiers,Desayuno/Merienda,,10,,Palmeritas,false
+EatMyTrip,Desayuno/Merienda,,20,,Brunch,false
+Good Coffee,Desayuno/Merienda,,10,,,false
+Igo Coffee,Desayuno/Merienda,,10,,,false
+Cristina Oria,Desayuno/Merienda,,20,,,false
+Hanso Café,Desayuno/Merienda,,15,,,false
+Zafyro,Desayuno/Merienda,,15,,,false
+Agrado Café,Desayuno/Merienda,,15,,,false
+Rawcoco,Desayuno/Merienda,,15,,,false
+Malvy's Shakes,Desayuno/Merienda,,10,,,false
+N2 Lab,Desayuno/Merienda,,10,,Heladería,false
+Rolirolls,Desayuno/Merienda,,10,,Rollitos de canela,false
+Religion Speciality Coffee,Desayuno/Merienda,,10,,,false
+Guilty Cookie Shop,Desayuno/Merienda,,10,,,false
+Zenith,Desayuno/Merienda,,20,,Brunch,false
+Coco Mocca,Desayuno/Merienda,,15,,,false
+La Gringa,Desayuno/Merienda,,20,,Brunch,false
+Del Cielo Cookies,Desayuno/Merienda,,10,,,false
+Sufu Cake,Desayuno/Merienda,,15,,,false
+Le Pain Quotidien,Desayuno/Merienda,,20,,,true
+Mistura,Desayuno/Merienda,,15,,,false
+Monkee Koffee,Desayuno/Merienda,,15,,,false
+Salón des Fleurs,Desayuno/Merienda,,20,,,false
+La Florería,Desayuno/Merienda,,20,,Brunch,false
+The Toast Cafe,Desayuno/Merienda,,15,,Brunch,false
+Mimis Creperie,Desayuno/Merienda,,15,,,false
+Dulce Hogar,Desayuno/Merienda,Móstoles,15,,,false
+Delish Vegan Doughnuts,Desayuno/Merienda,,10,2,,false
+Mamma Framboise,Desayuno/Merienda,,15,9,,true
+CookieLab,Desayuno/Merienda,,10,8.5,,false
+Faborit,Para Comer,,20,,,true
+Red Bar,Para Comer,,20,,24h - Todo tipo de comida,false
+Avocado Show,Para Comer,,20,,,false
+La Desayuneria,Para Comer,,15,,,false
+Mooser,Para Comer,,30,,Fondue,false
+El Gordo,Para Comer,,40,,Premium,false
+El Imparcial,Para Comer,,25,,,false
+80º,Para Comer,Malasaña,30,10,,false
+Crepes & Waffles,Para Comer,,15,10,,true
+La Mucca,Para Comer,,20,8,,true
+Casa a la Malicia,Para Cenar,,25,,,false
+Marieta,Para Cenar,,35,10,De moda,true
+Café de Paris,Para Cenar,,30,,De moda,false
+Mediavuelta,Premium,,40,,Rooftop,false
+Inclan,Premium,,20,,15-20€,false
+ZEST,Healthy,,20,,,false
+Tasty Poke,Healthy,,15,,,true
+Urban Poke Bar,Healthy,,15,,,false
+Aloha Poké,Healthy,,15,,,true
+Honest Greens,Healthy,,20,,,true
+Fismuler,Cheesecake,Almagro,30,10,Tarta de queso,false
+Mis Tartas de Queso,Cheesecake,,15,,,false
+Luna & Wanda,Cheesecake,,20,,,false
+Mercado de Ibiza,Cheesecake,,20,,,false
+Alex Cordobés,Cheesecake,,15,,,false
+Cheescake Avenue,Cheesecake,,15,,,false
+Restaurante Gigi,Cheesecake,,25,,,false
+Penthouse Hotel ME Madrid,Mercados/Terrazas,,30,,,false
+Room Mate Don Oscar,Mercados/Terrazas,,25,,,false
+Mercado de San Miguel,Mercados/Terrazas,Plaza Mayor,25,8,,false
+Mercado de San Antón,Mercados/Terrazas,Chueca,20,8,,false
+Mercado de San Ildefonso,Mercados/Terrazas,Malasaña,20,8,,false
+Public,Barato,,10,,,false
+Bazaar,Barato,,15,,,false
+Panther,Barato,,10,9,,false
